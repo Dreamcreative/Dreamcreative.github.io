@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/m logo32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/m logo16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="解决IOS滑动慢的方法 css样式1-webkit-overflow-scrolling : touch; IOS不兼容 js 的 onscroll 事件12ios的webview 内核 设定了其在进行momentum scrolling(弹性滚动)时,会停止所有的 事件响应 及 DOM操作引起的页面渲染 (亲测),故 onscroll 不能实时响应  只能当滑动完全停止时，才能重新开始时间的响应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端兼容">
+<meta property="og:url" content="http://yoursite.com/2018/09/13/移动端兼容/index.html">
+<meta property="og:site_name" content="入梦夜">
+<meta property="og:description" content="解决IOS滑动慢的方法 css样式1-webkit-overflow-scrolling : touch; IOS不兼容 js 的 onscroll 事件12ios的webview 内核 设定了其在进行momentum scrolling(弹性滚动)时,会停止所有的 事件响应 及 DOM操作引起的页面渲染 (亲测),故 onscroll 不能实时响应  只能当滑动完全停止时，才能重新开始时间的响应">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-13T10:33:14.724Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端兼容">
+<meta name="twitter:description" content="解决IOS滑动慢的方法 css样式1-webkit-overflow-scrolling : touch; IOS不兼容 js 的 onscroll 事件12ios的webview 内核 设定了其在进行momentum scrolling(弹性滚动)时,会停止所有的 事件响应 及 DOM操作引起的页面渲染 (亲测),故 onscroll 不能实时响应  只能当滑动完全停止时，才能重新开始时间的响应">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/13/移动端兼容/"/>
+
+
+
+
+
+  <title>移动端兼容 | 入梦夜</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">入梦夜</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-关于"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/移动端兼容/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="前端菜鸟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="入梦夜">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">移动端兼容</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T17:27:08+08:00">
+                2018-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="解决IOS滑动慢的方法-css样式"><a href="#解决IOS滑动慢的方法-css样式" class="headerlink" title="解决IOS滑动慢的方法 css样式"></a>解决IOS滑动慢的方法 css样式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-overflow-scrolling : touch;</span><br></pre></td></tr></table></figure>
+<h2 id="IOS不兼容-js-的-onscroll-事件"><a href="#IOS不兼容-js-的-onscroll-事件" class="headerlink" title="IOS不兼容 js 的 onscroll 事件"></a>IOS不兼容 js 的 onscroll 事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ios的webview 内核 设定了其在进行momentum scrolling(弹性滚动)时,会停止所有的 事件响应 及 DOM操作引起的页面渲染 (亲测),故 onscroll 不能实时响应  </span><br><span class="line">只能当滑动完全停止时，才能重新开始时间的响应和页面的渲染</span><br></pre></td></tr></table></figure>
+<h2 id="IOS-系统元素被触摸是产生的半透明灰色遮罩怎么去掉"><a href="#IOS-系统元素被触摸是产生的半透明灰色遮罩怎么去掉" class="headerlink" title="IOS 系统元素被触摸是产生的半透明灰色遮罩怎么去掉"></a>IOS 系统元素被触摸是产生的半透明灰色遮罩怎么去掉</h2><h3 id="IOS用户点击一个链接，会出现一个半透明的灰色遮罩，如果想要禁用可设置"><a href="#IOS用户点击一个链接，会出现一个半透明的灰色遮罩，如果想要禁用可设置" class="headerlink" title="IOS用户点击一个链接，会出现一个半透明的灰色遮罩，如果想要禁用可设置"></a>IOS用户点击一个链接，会出现一个半透明的灰色遮罩，如果想要禁用可设置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a,button ,input,textarea&#123;</span><br><span class="line">    -webkit-tap-highlight-color : rgba(0,0,0,0) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="部分Android-系统中元素被点击是产生的边框怎么去掉"><a href="#部分Android-系统中元素被点击是产生的边框怎么去掉" class="headerlink" title="部分Android 系统中元素被点击是产生的边框怎么去掉"></a>部分Android 系统中元素被点击是产生的边框怎么去掉</h2><p>Android用户点击一个链接，会出现一个边框或者半透明灰色遮罩，不同生产商定义出来的效果不一样可设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a,button ,input,textarea&#123;</span><br><span class="line">    -webkit-tap-highlight-color :rgba(0,0,0,0);</span><br><span class="line">    -webkit-user-modify : read-write-plaintext-only;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>-webkit-user-modify  有个副作用，就是输入法不再能够输入多个字符</p>
+<h2 id="点击出现300ms延迟原因"><a href="#点击出现300ms延迟原因" class="headerlink" title="点击出现300ms延迟原因"></a>点击出现300ms延迟原因</h2><p>IOS的Safari浏览器需要判断用户是单纯的点击链接还是要双击改部分区域进行缩放操作<br>300ms延迟解决方案:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fastclick可以解决在手机上点击事件的300ms延迟</span><br><span class="line">zepto的touch模块，tap事件也是解决click的延迟问题</span><br><span class="line">通过绑定ontouchstart 事件 ，加快对事件的响应</span><br></pre></td></tr></table></figure></p>
+<h2 id="fixed-bug"><a href="#fixed-bug" class="headerlink" title="fixed bug"></a>fixed bug</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位</span><br><span class="line">android下fixed表现要比iOS更好，软键盘弹出时，不会影响fixed元素定位</span><br><span class="line">ios4下不支持position:fixed</span><br></pre></td></tr></table></figure>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>可用isroll.js，暂无完美方案<br>如何阻止windows Phone的默认触摸事件<br>winphone下默认触摸事件事件使用e.preventDefault是无效的<br>目前解决方法是使用样式来禁用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">html&#123;-ms-touch-action: none;&#125;/* 禁止winphone默认触摸事件 */</span><br></pre></td></tr></table></figure></p>
+<h2 id="屏幕旋转的事件和样式"><a href="#屏幕旋转的事件和样式" class="headerlink" title="屏幕旋转的事件和样式"></a>屏幕旋转的事件和样式</h2><p>事件  window.orientation，取值：正负90表示横屏模式、0和180表现为竖屏模式；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">window.onorientationchange = function()&#123;</span><br><span class="line">switch(window.orientation)&#123;</span><br><span class="line">    case -90:</span><br><span class="line">    case 90:</span><br><span class="line">    alert(&quot;横屏:&quot; + window.orientation);</span><br><span class="line">    case 0:</span><br><span class="line">    case 180:</span><br><span class="line">    alert(&quot;竖屏:&quot; + window.orientation);</span><br><span class="line">    break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">样式</span><br><span class="line">//竖屏时使用的样式</span><br><span class="line">@media all and (orientation:portrait) &#123;</span><br><span class="line">    .css&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//横屏时使用的样式</span><br><span class="line">@media all and (orientation:landscape) &#123;</span><br><span class="line">    .css&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="模拟按钮hover效果"><a href="#模拟按钮hover效果" class="headerlink" title="模拟按钮hover效果"></a>模拟按钮hover效果</h2><p>移动端触摸按钮的效果。可明示用户有些事正要发生，是一个比较好的体验，但是移动设备中并没有鼠标指针，使用css的hover并不能满足我们的需求，还好国外有个激活css的active效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    a&#123;-webkit-tap-highlight-color: rgba(0,0,0,0);&#125;</span><br><span class="line">    .btn-blue&#123;display:block;height:42px;line-height:42px;text-align:center;border-radius:4px;font-size:18px;color:#FFFFFF;background-color: #4185F3;&#125;</span><br><span class="line">    .btn-blue:active&#123;background-color: #357AE8;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;btn-blue&quot;&gt;按钮&lt;/div&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    document.addEventListener(&quot;touchstart&quot;, function()&#123;&#125;, true)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="各种禁用"><a href="#各种禁用" class="headerlink" title="各种禁用"></a>各种禁用</h2><h3 id="禁止ios-长按时不触发系统的菜单，禁止ios-amp-android长按时下载图片"><a href="#禁止ios-长按时不触发系统的菜单，禁止ios-amp-android长按时下载图片" class="headerlink" title="禁止ios 长按时不触发系统的菜单，禁止ios&amp;android长按时下载图片"></a>禁止ios 长按时不触发系统的菜单，禁止ios&amp;android长按时下载图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-touch-callout   :: default || none  当触摸并按住触摸目标是，禁止或显示系统默认菜单</span><br></pre></td></tr></table></figure>
+<h3 id="禁止ios和android用户选中文字"><a href="#禁止ios和android用户选中文字" class="headerlink" title="禁止ios和android用户选中文字"></a>禁止ios和android用户选中文字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-user-select  :: none|| text  || all || element  文本能否被选择</span><br></pre></td></tr></table></figure>
+<h3 id="禁用radio-和-checkBox-默认样式"><a href="#禁用radio-和-checkBox-默认样式" class="headerlink" title="禁用radio 和 checkBox  默认样式"></a>禁用radio 和 checkBox  默认样式</h3><p>::-ms-check  适用于表单复选框或单选按钮默认图标的修改，同样有多个属性值， 设置他display：none ;并设置背景图片来修饰可得到我们想要的效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input[type=radio]::-ms-check,input[type=checkbox]::-ms-check&#123;</span><br><span class="line">    display: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="禁用PC端表单输入框默认清除按钮"><a href="#禁用PC端表单输入框默认清除按钮" class="headerlink" title="禁用PC端表单输入框默认清除按钮"></a>禁用PC端表单输入框默认清除按钮</h3><p>当表单文本输入框输入内容后会显示文本清除按钮，::-ms-clear 适用于该清除按钮的修改，同样设置使它隐藏 (display:none) 并使用背景图片来修饰可得到我们想要的效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">input[type=text]::-ms-clear,input[type=tel]::-ms-clear,</span><br><span class="line">input[type=number::-ms-clear&#123;</span><br><span class="line">    display: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="适配iPhone-x-齐刘海"><a href="#适配iPhone-x-齐刘海" class="headerlink" title="适配iPhone x 齐刘海"></a>适配iPhone x 齐刘海</h2><p><a href="https://www.qianduan.net/web-app-adapter-iphone-x/" target="_blank" rel="noopener">参考地址</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/13/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/13/长度单位/" rel="prev" title="长度单位">
+                长度单位 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.JPG"
+                alt="前端菜鸟" />
+            
+              <p class="site-author-name" itemprop="name">前端菜鸟</p>
+              <p class="site-description motion-element" itemprop="description">一个前端菜鸟的学习过程</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决IOS滑动慢的方法-css样式"><span class="nav-number">1.</span> <span class="nav-text">解决IOS滑动慢的方法 css样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOS不兼容-js-的-onscroll-事件"><span class="nav-number">2.</span> <span class="nav-text">IOS不兼容 js 的 onscroll 事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOS-系统元素被触摸是产生的半透明灰色遮罩怎么去掉"><span class="nav-number">3.</span> <span class="nav-text">IOS 系统元素被触摸是产生的半透明灰色遮罩怎么去掉</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IOS用户点击一个链接，会出现一个半透明的灰色遮罩，如果想要禁用可设置"><span class="nav-number">3.1.</span> <span class="nav-text">IOS用户点击一个链接，会出现一个半透明的灰色遮罩，如果想要禁用可设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分Android-系统中元素被点击是产生的边框怎么去掉"><span class="nav-number">4.</span> <span class="nav-text">部分Android 系统中元素被点击是产生的边框怎么去掉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点击出现300ms延迟原因"><span class="nav-number">5.</span> <span class="nav-text">点击出现300ms延迟原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fixed-bug"><span class="nav-number">6.</span> <span class="nav-text">fixed bug</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">6.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屏幕旋转的事件和样式"><span class="nav-number">7.</span> <span class="nav-text">屏幕旋转的事件和样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟按钮hover效果"><span class="nav-number">8.</span> <span class="nav-text">模拟按钮hover效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各种禁用"><span class="nav-number">9.</span> <span class="nav-text">各种禁用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止ios-长按时不触发系统的菜单，禁止ios-amp-android长按时下载图片"><span class="nav-number">9.1.</span> <span class="nav-text">禁止ios 长按时不触发系统的菜单，禁止ios&amp;android长按时下载图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止ios和android用户选中文字"><span class="nav-number">9.2.</span> <span class="nav-text">禁止ios和android用户选中文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用radio-和-checkBox-默认样式"><span class="nav-number">9.3.</span> <span class="nav-text">禁用radio 和 checkBox  默认样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用PC端表单输入框默认清除按钮"><span class="nav-number">9.4.</span> <span class="nav-text">禁用PC端表单输入框默认清除按钮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配iPhone-x-齐刘海"><span class="nav-number">10.</span> <span class="nav-text">适配iPhone x 齐刘海</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">前端菜鸟</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
