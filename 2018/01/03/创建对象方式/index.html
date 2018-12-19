@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="创建对象方式," />
+  <meta name="keywords" content="创建对象方式,">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/03/创建对象方式/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/03/创建对象方式/">
 
 
 
@@ -138,7 +138,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -148,13 +148,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">入梦夜</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-关于"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-关于"></i> <br>
             
             关于
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br>
             
             标签
           </a>
@@ -238,20 +238,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/03/创建对象方式/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="前端菜鸟">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.JPG">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="入梦夜">
     </span>
 
@@ -323,7 +323,7 @@ alert(this.age);
 } 
 
 obj.showName(); //Koji 
-obj.showAge(); //21
+obj.showAge(); //21 
 </code></pre>
 <p>通过new 关键字生成一个对象，然后根据js是动态语言的特性添加属性和方法，构造一个对象。其中的this 是表示调用改方法的对象。<br>这种方式的问题是如果需要多次创建对象，则需要重复代码多次，不利于代码的复用</p>
 <p>2.工厂方法</p>
@@ -360,7 +360,7 @@ var obj2 = createObj(<span class="string">"Luo"</span>, 21);
 obj1.showName(); //Koji 
 obj1.showAge(); //22 
 obj2.showName(); //Luo 
-obj2.showAge(); //21
+obj2.showAge(); //21 
 </code></pre>
 <p>上面的方式虽然可以提高代码的复用率，但和面向对象中类的概念相比有一个很大的缺陷，面向对象强调对象的属性私有，而对象的方法是共享的。而上面的工厂方法创建对象的时候要为每个对象创建各自私有的方法， 同时由于为每个对象都创建逻辑相同的方法，浪费内存</p>
 <p>3.构造函数方式</p>
@@ -388,7 +388,7 @@ alert(this.name) ;
 }
 Person.prototype.showAge = <span class="function"><span class="title">function</span></span>(){ 
 alert(this.age); 
-}
+} 
 </code></pre>
 <p>当生成Person对象的时候 prototype的属性都赋值给了新的对象。 那么属性和方法是共享的。 改方法的问题首先是构造函数不能传参，每个新生成的对象都有默认值， 其次。方法共享没有任何问题，但是属性共享就有问题， 当属性是可改变状态的对象的时候</p>
 <pre><code class="bash"> Person.prototype.arr= new Array(<span class="string">"aaa"</span>,<span class="string">"bbb"</span>);
@@ -402,7 +402,7 @@ obj1.showArr() // [<span class="string">"aaa"</span> ,<span class="string">"bbb"
 obj2.showArr() // [<span class="string">"aaa"</span> ,<span class="string">"bbb"</span>,<span class="string">"ccc"</span>]
 </code></pre>
 <p>上面的代码通过obj1 向obj1的属性arr添加元素的时候， obj2的arr属性的元素也跟着受到影响，因为obj1 和obj2 对象的arr属性引用的是同一个对象，如果改变其中一个对象，那么另一个对象也会同时改变</p>
-<ol>
+<ol start="5">
 <li>使用混合的构造函数 /原型方式<br>使用构造函数定义对象的属性， 使用原型（prototype） 定义对象的方法，这样就能做到属性私有而方法共有</li>
 </ol>
 
@@ -502,11 +502,9 @@ obj2.showArr() // [<span class="string">"aaa"</span> ,<span class="string">"bbb"
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.JPG"
-                alt="前端菜鸟" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.JPG" alt="前端菜鸟">
             
               <p class="site-author-name" itemprop="name">前端菜鸟</p>
               <p class="site-description motion-element" itemprop="description">一个前端菜鸟的学习过程</p>
@@ -519,7 +517,7 @@ obj2.showArr() // [<span class="string">"aaa"</span> ,<span class="string">"bbb"
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -532,7 +530,7 @@ obj2.showArr() // [<span class="string">"aaa"</span> ,<span class="string">"bbb"
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
