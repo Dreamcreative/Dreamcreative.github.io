@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="css3新特性," />
+  <meta name="keywords" content="css3新特性,">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/02/css3新特性/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/02/css3新特性/">
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">入梦夜</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br>
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-关于"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-关于"></i> <br>
             
             关于
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br>
             
             标签
           </a>
@@ -247,7 +247,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="前端菜鸟">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.JPG">
     </span>
 
@@ -312,7 +312,7 @@
       
         <p>1.过渡 2.动画 3.形状转变（transition） 4. 选择器  5.阴影 6. 边框 border-image   border-radius<br>7.背景 background-clip  background-origin  background-size  8. 反射  9 文字 （换行  省略号   文字阴影）<br>10 颜色 （rgba  hsla） 11 渐变（gradient） 12 filter   13  弹性布局  14 栅格布局 15 多列布局  16 盒模型定义（box-sizing）<br>17媒体查询  @media   18  混合模式  </p>
 <ol>
-<li>过渡  兼容   ie10   firefox chrome safari  opera<br>``` bash<br>transition  : transition-property  transition-duration transition-timing-function transition-delay<br>//过渡的css属性  过渡效果需要的时间  过渡效果的速度曲线  过渡效果何时开始</li>
+<li>过渡  兼容   ie10   firefox chrome safari  opera<br><code>`</code> bash<br>transition  : transition-property  transition-duration transition-timing-function transition-delay<br>//过渡的css属性  过渡效果需要的时间  过渡效果的速度曲线  过渡效果何时开始</li>
 </ol>
 <p>transition-timing-function : linear / ease  /ease-in / ease-out / ease-in-out / cubic-bezier(n,n,n,n)  n [0,1]<br>匀速 / 慢速开始，变快 ，慢速结束 / 慢速开始 / 慢速结束 / 慢速开始，慢速结束 /  </p>
 <pre><code>cubic-bezier (贝塞尔 曲线 )
@@ -367,7 +367,7 @@ x  y  inset  color ;
 <pre><code class="bash">gradient 
 -moz-linear-gradient( top , start-color [, color ,color] , end-color );
 -webkit-gradient(  speed , start point , end point , from (color ) , to ( color ))
--o-linear-gradient( start point , start - color ,end-color) ;
+-o-linear-gradient( start point , start - color ,end-color) ; 
 </code></pre>
 <p>ie 下的渐变靠滤镜实现渐变 ，</p>
 <p>13弹性布局 </p>
@@ -404,14 +404,18 @@ display : -webkit-flex ;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/02/js变量提升/" rel="next" title="变量提升">
+                <i class="fa fa-chevron-left"></i> 变量提升
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/02/js变量提升/" rel="prev" title="变量提升">
-                变量提升 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/03/跨域问题/" rel="prev" title="跨域问题">
+                跨域问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -469,9 +473,7 @@ display : -webkit-flex ;
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.JPG"
-                alt="前端菜鸟" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.JPG" alt="前端菜鸟">
             
               <p class="site-author-name" itemprop="name">前端菜鸟</p>
               <p class="site-description motion-element" itemprop="description">一个前端菜鸟的学习过程</p>
@@ -484,7 +486,7 @@ display : -webkit-flex ;
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -497,7 +499,7 @@ display : -webkit-flex ;
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -534,7 +536,7 @@ display : -webkit-flex ;
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

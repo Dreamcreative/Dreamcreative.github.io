@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/m logo32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/m logo16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React16流程,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="React16 流程ReactDOM.createElement 默认调用 ReactDOM.createElement 返回 React 元素对象   为什么需要在 文件顶部引入 import React from ‘react’ - 因为 React 元素转为 React 元素对象需要默认调用 React.createElement(type, config, callback)    生成">
+<meta name="keywords" content="React16流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React16流程">
+<meta property="og:url" content="http://yoursite.com/2021/09/02/React 流程/index.html">
+<meta property="og:site_name" content="入梦夜">
+<meta property="og:description" content="React16 流程ReactDOM.createElement 默认调用 ReactDOM.createElement 返回 React 元素对象   为什么需要在 文件顶部引入 import React from ‘react’ - 因为 React 元素转为 React 元素对象需要默认调用 React.createElement(type, config, callback)    生成">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-09-02T06:04:48.940Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React16流程">
+<meta name="twitter:description" content="React16 流程ReactDOM.createElement 默认调用 ReactDOM.createElement 返回 React 元素对象   为什么需要在 文件顶部引入 import React from ‘react’ - 因为 React 元素转为 React 元素对象需要默认调用 React.createElement(type, config, callback)    生成">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/09/02/React 流程/">
+
+
+
+
+
+  <title>React16流程 | 入梦夜</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">入梦夜</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-关于"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/02/React 流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="前端菜鸟">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="入梦夜">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React16流程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-02T17:27:44+08:00">
+                2021-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="React16-流程"><a href="#React16-流程" class="headerlink" title="React16 流程"></a>React16 流程</h1><h2 id="ReactDOM-createElement"><a href="#ReactDOM-createElement" class="headerlink" title="ReactDOM.createElement"></a>ReactDOM.createElement</h2><ol>
+<li>默认调用 ReactDOM.createElement 返回 React 元素对象</li>
+</ol>
+<ul>
+<li><p>为什么需要在 文件顶部引入 import React from ‘react’</p>
+<pre><code>- 因为 React 元素转为 React 元素对象需要默认调用 React.createElement(type, config, callback)
+</code></pre></li>
+</ul>
+<ol start="2">
+<li>生成 rootFiber 节点，初始化 fiber 节点属性<ul>
+<li>初始化 rootFiber 节点的更新队列</li>
+<li>批量更新</li>
+</ul>
+</li>
+<li>调度更新<ul>
+<li>标记 fiber 更新时间</li>
+</ul>
+</li>
+</ol>
+<h1 id="Scheduler-调度器-会根据-fiber-的优先级进行任务的中断"><a href="#Scheduler-调度器-会根据-fiber-的优先级进行任务的中断" class="headerlink" title="Scheduler(调度器)-会根据 fiber 的优先级进行任务的中断"></a>Scheduler(调度器)-会根据 fiber 的优先级进行任务的中断</h1><ul>
+<li><p>浏览器实现了 requestIdleCallback API,由于一些原因，react 没有采用</p>
+<ol>
+<li>浏览器兼容性</li>
+<li>requestIdleCallback 触发不稳定，比如，当浏览器切换了 tab 之后，之前 tab 注册的 requestIdleCallback 触发频率会变得很低</li>
+</ol>
+</li>
+<li><p>react 实现了功能更完备的 requestIdleCallback Polyfill。除了在空闲时触发回调，Schedule 还提供了多种调度优先级供任务设置</p>
+</li>
+</ul>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>调度任务的优先级，高优任务优先进入 reconciler</p>
+<h1 id="Reconciler-协调器-render-阶段-会根据-fiber-的优先级进行任务的中断"><a href="#Reconciler-协调器-render-阶段-会根据-fiber-的优先级进行任务的中断" class="headerlink" title="Reconciler(协调器)-render 阶段,会根据 fiber 的优先级进行任务的中断"></a>Reconciler(协调器)-render 阶段,会根据 fiber 的优先级进行任务的中断</h1><ul>
+<li><p>接收到 Scheduler 的任务后，每次循环都会先判断当前是否还有剩余时间</p>
+<p>function workLoopConcurrent(){<br>while( workInProgress!==null &amp;&amp; !shouldYield()){<br>workInProgress = performUnitOfWork(workInProgress)<br>}<br>}</p>
+</li>
+<li><p>reconciler 为变化的虚拟 DOM 打上代表 增/删/更新的 effectTag 标记</p>
+</li>
+<li>当 当前组件都完成 Reconciler 的工作，会统一交给 Renderer</li>
+</ul>
+<h2 id="performSyncWorkOnRoot"><a href="#performSyncWorkOnRoot" class="headerlink" title="performSyncWorkOnRoot"></a>performSyncWorkOnRoot</h2><ul>
+<li>同步任务入口</li>
+<li><p>调用</p>
+<p>function workLoopSync(){<br>while(workInProgress!==null){<br>performUnitOfWork(workInProgress)<br>}<br>}</p>
+</li>
+</ul>
+<h2 id="performConcurrentWorkOnRoot"><a href="#performConcurrentWorkOnRoot" class="headerlink" title="performConcurrentWorkOnRoot"></a>performConcurrentWorkOnRoot</h2><ul>
+<li>异步任务入口</li>
+<li><p>调用</p>
+<p>function workLoopConcurrent(){<br>while(workInProgress!==null &amp;&amp; !shouldYield()){<br>performUnitOfWork(workInProgress)<br>}<br>}</p>
+</li>
+</ul>
+<h2 id="performUnitOfWork"><a href="#performUnitOfWork" class="headerlink" title="performUnitOfWork"></a>performUnitOfWork</h2><h3 id="递阶段"><a href="#递阶段" class="headerlink" title="递阶段"></a>递阶段</h3><ol>
+<li>rootFiber 向下深度优先遍历，为遍历到的每个 fiber 节点调用 beginWork</li>
+</ol>
+<h4 id="beginWork"><a href="#beginWork" class="headerlink" title="beginWork"></a>beginWork</h4><ul>
+<li>current 存在时，表示 update;不存在时，表示 mount</li>
+</ul>
+<ol>
+<li>mount 时，为节点创建 fiber 节点，为 根节点打上 effectTag 标记，其他子节点不需要打 effectTag 标记</li>
+<li>update 时，为节点创建 fiber 节点，调用 DOM diff 为各个节点打上 effectTag 标记</li>
+</ol>
+<h5 id="reconcileChildren"><a href="#reconcileChildren" class="headerlink" title="reconcileChildren"></a>reconcileChildren</h5><ol>
+<li>current 不存在时(mount 阶段)，调用 mountChildFibers</li>
+<li>current 存在时(update 阶段)，调用 reconcileChildFibers</li>
+<li>mountChildFibers 与 reconcileChildFibers 逻辑基本一样，只是在 update 阶段时，会为有更新的 fiber 节点打上 effectTag 标记</li>
+</ol>
+<h6 id="mountChildFibers-mount-阶段"><a href="#mountChildFibers-mount-阶段" class="headerlink" title="mountChildFibers(mount 阶段)"></a>mountChildFibers(mount 阶段)</h6><ul>
+<li>只会给 rootFIber 节点打上 Placement effectTag 标记，其他子节点不会打标记，在 Renderer-commit 阶段，进行 rootFiber 节点的挂载<ul>
+<li>为什么 mount 阶段只在 rootFiber 打 effectTag 标记，因为 如果给每个子 fiber 都打上 effectTag，那么在 mount 时所有 DOM 节点都会进行插入操作，消耗性能</li>
+</ul>
+</li>
+</ul>
+<h5 id="reconcileChildFibers-update-阶段"><a href="#reconcileChildFibers-update-阶段" class="headerlink" title="reconcileChildFibers(update 阶段)"></a>reconcileChildFibers(update 阶段)</h5><ul>
+<li>会为变化的 fiber 节点打上 effectTag 标记(会在 Renderer-commit 阶段时，根据不同的 effectTag 进行 增、删、更新等操作)</li>
+<li>在这个阶段进行 DOM diff <code>reconcileChildrenArray(returnFiber, currentFirstChild, newChildren, lanes)</code></li>
+</ul>
+<h3 id="归阶段"><a href="#归阶段" class="headerlink" title="归阶段"></a>归阶段</h3><ol>
+<li>调用 completeWork 处理 fiber 节点</li>
+<li>如果存在其兄弟 fiber 节点，继续进行 递阶段 调用 beginWork，</li>
+<li>如果不存在兄弟 fiber 节点，则进行父 fiber 节点的 归阶段，调用 completeWork</li>
+<li>一直到 rootFiber。</li>
+<li>render 阶段结束</li>
+</ol>
+<h4 id="completeWork-current-workInProgress-renderLanes"><a href="#completeWork-current-workInProgress-renderLanes" class="headerlink" title="completeWork(current, workInProgress, renderLanes)"></a>completeWork(current, workInProgress, renderLanes)</h4><ul>
+<li>为 beginWork 阶段生成的 fiber 节点生成对应的 DOM 节点，并生成 DOM 树</li>
+<li>使用 current 是否存在来判断当前是<code>mount阶段</code>还是<code>update阶段</code></li>
+<li>current 存在时，表示 update;不存在时，表示 mount<ol>
+<li>update 时，主要处理 props 比如：<ol>
+<li>onClick、onChange 等回调函数的注册</li>
+<li>处理 style prop</li>
+<li>处理 DANGEROUSLY_SET_INNER_HTML prop</li>
+<li>处理 children prop</li>
+<li>等等</li>
+</ol>
+</li>
+<li>mount 时，主要处理逻辑<ol>
+<li>为 fiber 节点生成对应的 DOM 节点</li>
+<li>将子孙 DOM 节点插入父 DOM 节点</li>
+<li>与 update 时相同，主要处理 DOM 节点上 props</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="createInstance"><a href="#createInstance" class="headerlink" title="createInstance"></a>createInstance</h5><ul>
+<li>创建 DOM 节点</li>
+<li>调用 document.createElement()方法</li>
+</ul>
+<h5 id="appendAllChildren"><a href="#appendAllChildren" class="headerlink" title="appendAllChildren"></a>appendAllChildren</h5><ul>
+<li>将 fiber 所有子节点 append 到 fiber 对应的 DOM 节点上</li>
+</ul>
+<h4 id="finalizeInitialChildren"><a href="#finalizeInitialChildren" class="headerlink" title="finalizeInitialChildren"></a>finalizeInitialChildren</h4><ul>
+<li>初始化 DOM 节点属性 attribute 、事件初始化</li>
+</ul>
+<h2 id="effectList-单向链表"><a href="#effectList-单向链表" class="headerlink" title="effectList (单向链表)"></a>effectList (单向链表)</h2><ul>
+<li><p>elffectList 上保存着所有被打上了 effectTag 的 fiber 节点，</p>
+<ul>
+<li>在 归阶段 completeWork 中，遍历时，effectList.firstEffect 会保存第一个 fiber 节点， effectList.lastEffect 会保存最后一个 fiber 节点</li>
+</ul>
+<p><code>rootFiber.firstEffect = nextEffect; rootFiber.firstEffect.nextEffect =nextEffect</code></p>
+</li>
+</ul>
+<h1 id="Renderer-渲染器-commit-阶段-将更新后的-fiber-树渲染到页面上-同步执行-无法被中断"><a href="#Renderer-渲染器-commit-阶段-将更新后的-fiber-树渲染到页面上-同步执行-无法被中断" class="headerlink" title="Renderer(渲染器)-commit 阶段( 将更新后的 fiber 树渲染到页面上),同步执行,无法被中断"></a>Renderer(渲染器)-commit 阶段( 将更新后的 fiber 树渲染到页面上),同步执行,无法被中断</h1><h2 id="commitRoot-root-root-fiberRootNode-页面的根节点，只有一个-app-，rootFiber-组件的根节点"><a href="#commitRoot-root-root-fiberRootNode-页面的根节点，只有一个-app-，rootFiber-组件的根节点" class="headerlink" title="commitRoot(root) root: fiberRootNode-页面的根节点，只有一个(#app)，rootFiber 组件的根节点"></a>commitRoot(root) root: fiberRootNode-页面的根节点，只有一个(#app)，rootFiber 组件的根节点</h2><ul>
+<li><p>commit 阶段入口 分为三个子阶段</p>
+<ol>
+<li><p><code>before mutation阶段</code>(执行 DOM 操作之前)</p>
+<ol>
+<li>处理 DOM 节点渲染/删除后的逻辑</li>
+<li>遍历 effectList (<code>commitBeforeMutationEffects()</code>)</li>
+<li>调用 commitBeforeMutationEffects (调用 生命周期函数 getSnapshotBeforeUpdate 钩子)</li>
+<li>在浏览器完成布局与绘制之后异步调用 useEffect<ul>
+<li>为什么异步调用<ol>
+<li>useEffect 如果同步调用，阻塞浏览器的行为，导致各种问题</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>mutation 阶段(执行 DOM 操作)</p>
+<ul>
+<li>遍历 effectList (<code>commitMutationEffects()</code>)<ol>
+<li>根据 ContentReset effectTag 重置文本节点</li>
+<li>更新 ref</li>
+<li>根据 effectList 上 fiber 节点上不同的 effectTag 执行 增/删/更新等操作<ul>
+<li>Placement 插入操作 (<code>commitPlacement</code>)</li>
+<li>PlacementAndUpdate 插入并更新操作 (<code>commitPlacement() 、commitWork()</code>)</li>
+<li>Update 更新操作 (<code>commitWork</code>)</li>
+<li>Deletion 删除操作 (<code>commitDeletion()</code>)</li>
+</ul>
+</li>
+<li>执行 useLayoutEffect 销毁函数</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>layout 阶段(执行 DOM 操作之后, <code>DOM渲染完成</code>)</p>
+<ol>
+<li><p>遍历 effectList (<code>commitLayoutEffects()</code>)</p>
+<ol>
+<li><p><code>commitLayoutEffectOnFiber()</code>(调用生命周期钩子函数 、调用 hook 相关操作)</p>
+<ol>
+<li><p>ClassComponent : 根据 current 是否 === null 来判断是 mount 还是 update。</p>
+<ul>
+<li>mount 时，调用 componentDidMount()钩子</li>
+<li>update 时，调用 compomentDidUpdate()钩子</li>
+</ul>
+</li>
+<li><p>FunctionComponent 等类型：</p>
+<ul>
+<li>调用<code>useLayoutEffect</code>回调函数</li>
+<li><p>调用<code>useEffect</code>的销毁和回调函数</p>
+<p>function schedulePassiveEffects(finishedWork){<br>enqueuePendingPassiveHookEffectUnmount(finishedWork, effect);<br>enqueuePendingPassiveHookEffectMount(finishedWork, effect);<br>}</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><code>commitAttachRef()</code> 赋值 ref</p>
+</li>
+</ol>
+</li>
+<li><p>useEffect 相关的处理</p>
+</li>
+<li>性能追踪相关</li>
+<li>触发生命周期钩子 例如(componentDidxxxx) 和 hook(如 useLayoutEffect 、useEffect)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>调用 getSnapshotBeforeUpdate 生命周期钩子函数</p>
+<ul>
+<li>React v16 开始 对 componentWillxxxx 这类钩子前添加了<code>UNSAFE_</code>前缀<ul>
+<li>因为 fiber reconciler 调度在 Reconciler 协调器(render 阶段)会多次中断任务，所以组件对应的 componentWillxxxx 这类生命周期函数可能会被多次触发。导致行为与 React v15 不一致。因此，新增了 getSnapshotBeforeUpdate 这个生命周期钩子</li>
+<li>getSnapshotBeforeUpdate 钩子在 commit 阶段 - before mutation 阶段调用，commit 阶段内是同步调用的， 所以不会出现多次触发的问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>commit 阶段执行完后 rootFiber.current 与 finishedWork 切换 <code>root.current=finishedWork;</code></p>
+</li>
+</ul>
+<p>事件系统 packages/react-dom/src/events</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React16流程/" rel="tag"># React16流程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/11/组件规范/" rel="next" title="Vue组件规范">
+                <i class="fa fa-chevron-left"></i> Vue组件规范
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.JPG" alt="前端菜鸟">
+            
+              <p class="site-author-name" itemprop="name">前端菜鸟</p>
+              <p class="site-description motion-element" itemprop="description">一个前端菜鸟的学习过程</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React16-流程"><span class="nav-number">1.</span> <span class="nav-text">React16 流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ReactDOM-createElement"><span class="nav-number">1.1.</span> <span class="nav-text">ReactDOM.createElement</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scheduler-调度器-会根据-fiber-的优先级进行任务的中断"><span class="nav-number">2.</span> <span class="nav-text">Scheduler(调度器)-会根据 fiber 的优先级进行任务的中断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">2.1.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reconciler-协调器-render-阶段-会根据-fiber-的优先级进行任务的中断"><span class="nav-number">3.</span> <span class="nav-text">Reconciler(协调器)-render 阶段,会根据 fiber 的优先级进行任务的中断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#performSyncWorkOnRoot"><span class="nav-number">3.1.</span> <span class="nav-text">performSyncWorkOnRoot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#performConcurrentWorkOnRoot"><span class="nav-number">3.2.</span> <span class="nav-text">performConcurrentWorkOnRoot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#performUnitOfWork"><span class="nav-number">3.3.</span> <span class="nav-text">performUnitOfWork</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递阶段"><span class="nav-number">3.3.1.</span> <span class="nav-text">递阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#beginWork"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">beginWork</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#reconcileChildren"><span class="nav-number">3.3.1.1.1.</span> <span class="nav-text">reconcileChildren</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#mountChildFibers-mount-阶段"><span class="nav-number">3.3.1.1.1.1.</span> <span class="nav-text">mountChildFibers(mount 阶段)</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#reconcileChildFibers-update-阶段"><span class="nav-number">3.3.1.1.2.</span> <span class="nav-text">reconcileChildFibers(update 阶段)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归阶段"><span class="nav-number">3.3.2.</span> <span class="nav-text">归阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#completeWork-current-workInProgress-renderLanes"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">completeWork(current, workInProgress, renderLanes)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#createInstance"><span class="nav-number">3.3.2.1.1.</span> <span class="nav-text">createInstance</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#appendAllChildren"><span class="nav-number">3.3.2.1.2.</span> <span class="nav-text">appendAllChildren</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#finalizeInitialChildren"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">finalizeInitialChildren</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#effectList-单向链表"><span class="nav-number">3.4.</span> <span class="nav-text">effectList (单向链表)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Renderer-渲染器-commit-阶段-将更新后的-fiber-树渲染到页面上-同步执行-无法被中断"><span class="nav-number">4.</span> <span class="nav-text">Renderer(渲染器)-commit 阶段( 将更新后的 fiber 树渲染到页面上),同步执行,无法被中断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#commitRoot-root-root-fiberRootNode-页面的根节点，只有一个-app-，rootFiber-组件的根节点"><span class="nav-number">4.1.</span> <span class="nav-text">commitRoot(root) root: fiberRootNode-页面的根节点，只有一个(#app)，rootFiber 组件的根节点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">前端菜鸟</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
